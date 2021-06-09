@@ -2,24 +2,24 @@
 -- SFZILabs 2021
 
 class Result
-	new: =>
-		@Callbacks = {}
-		@resolver = (...) -> @resolve ...
+    new: =>
+        @Callbacks = {}
+        @resolver = (...) -> @resolve ...
 
-	resolve: (...) =>
-		return if @Value
-		@Value = { ... }
-		Fn ... for Fn in *@Callbacks
-		@Callbacks = nil	
+    resolve: (...) =>
+        return if @Value
+        @Value = { ... }
+        Fn ... for Fn in *@Callbacks
+        @Callbacks = nil    
 
-	result: (Fn) =>
-		if @Value
-			Fn unpack @Value
-		else table.insert @Callbacks, Fn
+    result: (Fn) =>
+        if @Value
+            Fn unpack @Value
+        else table.insert @Callbacks, Fn
 
-	hasResult: =>
-		@Value != nil
+    hasResult: =>
+        @Value != nil
 
-	getResult: =>
-		assert @hasResult!, 'cannot getResult until there is a result!'
-		unpack @Value
+    getResult: =>
+        assert @hasResult!, 'cannot getResult until there is a result!'
+        unpack @Value
