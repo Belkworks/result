@@ -1,4 +1,4 @@
--- easy.moon
+-- result.moon
 -- SFZILabs 2021
 
 class Result
